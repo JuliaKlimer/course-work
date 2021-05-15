@@ -43,7 +43,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Label fx:id="labelQuestion" alignment="CENTER" layoutX="204.0" layoutY="98.0" prefHeight="51.0" prefWidth="518.0" text="What is a correct syntax to output &quot;Hello World&quot; in C#?">
+      <Label fx:id="labelQuestion" alignment="CENTER" layoutX="197.0" layoutY="98.0" prefHeight="51.0" prefWidth="535.0" text="What is a correct syntax to output &quot;Hello World&quot; in C#?">
          <font>
             <Font name="Candara Bold" size="17.0" />
          </font>
@@ -81,5 +81,10 @@
             <Font name="Candara Light" size="18.0" />
          </font>
       </Button>
+      <Label fx:id="labelHidden" alignment="CENTER" layoutX="197.0" layoutY="143.0" prefHeight="51.0" prefWidth="535.0" text="Hidden label">
+         <font>
+            <Font name="Candara Bold" size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

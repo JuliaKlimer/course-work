@@ -9,6 +9,7 @@ public class Question {
         this.name = name;
         this.answers = answers;
     }
+    //правильный ответ - последний элмент массива
     public String correctAnswer(){
         return this.answers[answers.length-1];
     }

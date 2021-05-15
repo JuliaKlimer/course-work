@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainController {
@@ -37,6 +39,8 @@ public class MainController {
 
     @FXML
     void initialize() {
+        Button button = new Button();
+        button.setText("Open a New Window");
         csharpButton.setOnAction(actionEvent -> {
             try {
                 csharpButton.getScene().getWindow().hide();
@@ -46,10 +50,14 @@ public class MainController {
                 Parent root = loader.getRoot();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
-                stage.showAndWait();
-            } catch (IOException e) {
+
+               // stage.initOwner(primaryStage);
+                stage.initModality(Modality.WINDOW_MODAL);
+                stage.show();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         });
+
     }
 }
