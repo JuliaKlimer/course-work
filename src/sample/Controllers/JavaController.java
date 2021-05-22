@@ -1,10 +1,10 @@
 package sample.Controllers;
 
-import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
-import java.io.*;
 import java.net.URL;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.Question;
 
-public class CsharpController {
+public class JavaController {
 
     @FXML
     private ResourceBundle resources;
@@ -65,41 +65,34 @@ public class CsharpController {
     @FXML
     private Label labelHidden;
 
-    //private static final String FILE_NAME = "Test1.xml";
-
-    //масссив вопросов и ответов
     private Question[] questions = new Question[] {
-            new Question("What is a correct syntax to output \"Hello World\" in C#?", new String[]{
-                    "print(\"Hello World\")","cout << \"Hello World\";","console.log(\"Hello World\");","Console.WriteLine(\"Hello World\");"}),
-            new Question("Which operator can be used to compare two values?", new String[]{
-                    "=", "<>", "><","=="}),
-            new Question("Which data type is used to create a variable that should store text?", new String[]{
-                    "myString", "str", "Txt", "string"}),
-            new Question("How do you create a variable with the numeric value 5?", new String[]{
-                    "num x = 5", "x = 5;", "double x = 5;", "int x = 5;"}),
-            new Question("Which property can be used to find the length of a string?", new String[]{
-                    "length", "length()", "getLength()", "Length"}),
-            new Question("Which keyword is used to create a class in C#?", new String[]{
-                    "className", "MyClass", "class()", "class"}),
-            new Question("How do you create a method in C#?", new String[]{
-                    "MyMethod.", "myMethod[]", "(MyMethod)", "MyMethod()"}),
-            new Question("How do you start writing a while loop in C#?", new String[]{
-                    "while x > y {", "x > y while {", "while x > y:", "while (x > y)"}),
-            new Question("Which statement is used to stop a loop?", new String[]{
-                    "return", "stop", "exit", "break"}),
-            new Question("Which keyword is used to return a value inside a method?", new String[]{
-                    "get", "void", "break", "return"})
+            new Question("What is a correct syntax to output \"Hello World\" in Java?", new String[]{
+                    "print(\"Hello World\")","echo(\"Hello World\")","Console.WriteLine(\"Hello World\");", "System.out.println(\"Hello World\");"}),
+            new Question("How do you create a variable with the floating number 2.8?", new String[]{
+                    "x = 2.8f;", "byte x = 2.8f;", "float x = 2.8;","float x = 2.8f;"}),
+            new Question("Which method can be used to return a string in upper case letters?", new String[]{
+                    "tuc", "UpperCase", "touppercase", "toUpperCase"}),
+            new Question("To declare an array in Java, define the variable type with:", new String[]{
+                    "{}", "()", "None of this signs", "[]"}),
+            new Question("Which keyword is used to import a package from the Java API library?", new String[]{
+                    "getlib", "lib", "package", "import"}),
+            new Question("What is the parent of Error and Exception classes?", new String[]{
+                    "MainError", "MainException", "Catchable", "Throwable"}),
+            new Question("How to declare class in program?", new String[]{
+                    "new class MyClass {}", "MyClass extends Class {}", "select * from class MyClass {}", "class MyClass {}"}),
+            new Question("How do you start writing an if statement in Java?", new String[]{
+                    "if x > y then:", "if x > y:", "(x > y) if", "if (x > y)"}),
+            new Question("Which method can be used to find the highest value of x and y?", new String[]{
+                    "Math.maxNum(x,y)", "Math.maximum(x,y)", "Math.largest(x,y)", "Math.max(x,y)"}),
+            new Question("What is the correct way to create an object called myObj of MyClass?", new String[]{
+                    "class MyClass = new myObj();", "new myObj = MyClass();", "class myObj = new MyClass();", "MyClass myObj = new MyClass();"})
     };
-    //номер текущего вопроса, кол-во правильных ответов
+
     private int currentQuestion = 0, correctAnswer;
-    //текущий правильный ответ
     private String currentCorrectAnswer;
 
-    //Question[] questions = new Question[]{};
     @FXML
-    void initialize() throws Exception {
-        //serialize();
-        //deserialize();
+    void initialize() {
         csharpButton.setVisible(false);
         javaButton.setVisible(false);
         oopButton.setVisible(false);
@@ -143,7 +136,7 @@ public class CsharpController {
                     labelHidden.setVisible(true);
                 }
                 else if (correctAnswer > 3 && correctAnswer <= 7){
-                    labelHidden.setText("You have good knowledge of C#");
+                    labelHidden.setText("You have good knowledge of Java");
                     labelHidden.setVisible(true);
                 }
                 else if (correctAnswer > 7){
@@ -213,44 +206,5 @@ public class CsharpController {
         radioButton4.setVisible(false);
         answerButton.setVisible(false);
     }
-    /*public static void serialize() throws Exception {
-        ArrayList<Question> questions = new ArrayList<Question>();
-        questions.add(new Question("What is a correct syntax to output \"Hello World\" in C#?", new String[]{
-                "print(\"Hello World\")","cout << \"Hello World\";","console.log(\"Hello World\");","Console.WriteLine(\"Hello World\");"}));
-        questions.add(new Question("Which operator can be used to compare two values?", new String[]{
-                "=", "<>", "><","=="}));
-        FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME);
-        XMLEncoder xmlEncoder = new XMLEncoder(fileOutputStream);
-        Question question = new Question("Which data type is used to create a variable that should store text?", new String[]{
-                "myString", "str", "Txt", "string"});
-        question.setName("How do you create a variable with the numeric value 5?");
-        question.setAnswers(new String[]{"num x = 5", "x = 5;", "double x = 5;", "int x = 5;"});
-        xmlEncoder.writeObject(question);
-        xmlEncoder.flush();
-        question.setName("Which property can be used to find the length of a string?");
-        question.setAnswers(new String[]{"length", "length()", "getLength()", "Length"});
-        xmlEncoder.writeObject(question);
-        xmlEncoder.writeObject(new Question());
-        xmlEncoder.writeObject(new Question("Which keyword is used to create a class in C#?", new String[]{
-                "className", "MyClass", "class()", "class"}));
-        for (Question  q: questions) {
-            xmlEncoder.writeObject(q);
-        }
-        xmlEncoder.close();
-        fileOutputStream.close();
-    }
-    public static void deserialize() throws Exception {
-        FileInputStream fileInputStream = new FileInputStream(FILE_NAME);
-        XMLDecoder xmlDecoder = new XMLDecoder(new BufferedInputStream(fileInputStream));
-        while (fileInputStream.available()>0)
-        try {
-            Question question = (Question) xmlDecoder.readObject();
-        }
-        catch (Exception e){
-            break;
-        }
-        xmlDecoder.close();
-        fileInputStream.close();
-    }*/
 }
 

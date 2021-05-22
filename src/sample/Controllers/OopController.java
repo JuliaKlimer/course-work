@@ -1,10 +1,10 @@
 package sample.Controllers;
 
-import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
-import java.io.*;
 import java.net.URL;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,16 +15,13 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.Question;
 
-public class CsharpController {
+public class OopController {
 
     @FXML
     private ResourceBundle resources;
 
     @FXML
     private URL location;
-
-    @FXML
-    private Label chooseLabel;
 
     @FXML
     private Button csharpButton;
@@ -40,6 +37,9 @@ public class CsharpController {
 
     @FXML
     private Label labelQuestion;
+
+    @FXML
+    private Label chooseLabel;
 
     @FXML
     private RadioButton radioButton1;
@@ -65,48 +65,40 @@ public class CsharpController {
     @FXML
     private Label labelHidden;
 
-    //private static final String FILE_NAME = "Test1.xml";
-
-    //масссив вопросов и ответов
     private Question[] questions = new Question[] {
-            new Question("What is a correct syntax to output \"Hello World\" in C#?", new String[]{
-                    "print(\"Hello World\")","cout << \"Hello World\";","console.log(\"Hello World\");","Console.WriteLine(\"Hello World\");"}),
-            new Question("Which operator can be used to compare two values?", new String[]{
-                    "=", "<>", "><","=="}),
-            new Question("Which data type is used to create a variable that should store text?", new String[]{
-                    "myString", "str", "Txt", "string"}),
-            new Question("How do you create a variable with the numeric value 5?", new String[]{
-                    "num x = 5", "x = 5;", "double x = 5;", "int x = 5;"}),
-            new Question("Which property can be used to find the length of a string?", new String[]{
-                    "length", "length()", "getLength()", "Length"}),
-            new Question("Which keyword is used to create a class in C#?", new String[]{
-                    "className", "MyClass", "class()", "class"}),
-            new Question("How do you create a method in C#?", new String[]{
-                    "MyMethod.", "myMethod[]", "(MyMethod)", "MyMethod()"}),
-            new Question("How do you start writing a while loop in C#?", new String[]{
-                    "while x > y {", "x > y while {", "while x > y:", "while (x > y)"}),
-            new Question("Which statement is used to stop a loop?", new String[]{
-                    "return", "stop", "exit", "break"}),
-            new Question("Which keyword is used to return a value inside a method?", new String[]{
-                    "get", "void", "break", "return"})
+            new Question("OOP is short for ...", new String[]{
+                    "Only oriented programming","Only object program","Orient-objective programming", "Object-oriented programming"}),
+            new Question("Constructors are used to: ", new String[]{
+                    "To build a user interface", "To create a sub class", "Free memory","Initialize a newly created object"}),
+            new Question("Which keyword is used to access the method or member variables from the superclass?", new String[]{
+                    "class", "use", "this", "super"}),
+            new Question("Information Hiding can also be termed as ...", new String[]{
+                    "Inheritance", "Data hiding", "Abstraction", "Encapsulation"}),
+            new Question("What are the main OOP principles?", new String[]{
+                    "Encapsulation and Abstraction", "Inheritance and Encapsulation", "Polymorphism, Encapsulation and Inheritance", "Encapsulation, Inheritance, Polymorphism and Abstraction"}),
+            new Question("How can you call a class which cannot be instantiated?", new String[]{
+                    "Both this names are wrong", "You can use both names", "Uninstallable class", "Abstract class"}),
+            new Question("Name of the operator which takes tree arguments is ...", new String[]{
+                    "Such kind of operator doesn't exist", "Universal operator", "Binary operator", "Ternary operator"}),
+            new Question("What is ‘this’ pointer?", new String[]{
+                    "\'This\' pointer doesn't exist", "\'This\' pointer refers to the current method", "\'This\' pointer refers to the current class", "\'This\' pointer refers to the current object of a class"}),
+            new Question("Which OOPS concept is used as a reuse mechanism?", new String[]{
+                    "Polymorphism", "Abstraction", "Encapsulation", "Inheritance"}),
+            new Question("What is the correct way to create an object called myObj of MyClass (in Java/C#)?", new String[]{
+                    "class MyClass = new myObj();", "new myObj = MyClass();", "class myObj = new MyClass();", "MyClass myObj = new MyClass();"})
     };
-    //номер текущего вопроса, кол-во правильных ответов
+
     private int currentQuestion = 0, correctAnswer;
-    //текущий правильный ответ
     private String currentCorrectAnswer;
 
-    //Question[] questions = new Question[]{};
     @FXML
-    void initialize() throws Exception {
-        //serialize();
-        //deserialize();
+    void initialize() {
         csharpButton.setVisible(false);
         javaButton.setVisible(false);
         oopButton.setVisible(false);
         newButton.setVisible(false);
         labelHidden.setVisible(false);
         chooseLabel.setText("Good luck!");
-        labelHidden.setVisible(false);
         currentCorrectAnswer = questions[currentQuestion].correctAnswer();
         answerButton.setOnAction(event -> {
             //кнопка, выбранная пользователем
@@ -143,7 +135,7 @@ public class CsharpController {
                     labelHidden.setVisible(true);
                 }
                 else if (correctAnswer > 3 && correctAnswer <= 7){
-                    labelHidden.setText("You have good knowledge of C#");
+                    labelHidden.setText("You have good knowledge of Java");
                     labelHidden.setVisible(true);
                 }
                 else if (correctAnswer > 7){
@@ -175,9 +167,10 @@ public class CsharpController {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         Pane pane = new Pane();
-        Label alertLabel = new Label();
-        alertLabel.setText("Are you sure you want to exit?");
+        Label alertLabel = new Label("Are you sure you want to exit?");
         alertLabel.setVisible(true);
+        alertLabel.setLayoutX(60);
+        alertLabel.setLayoutY(100);
         Button yesButton = new Button("Yes");
         yesButton.setLayoutX(60);
         yesButton.setLayoutY(100);
@@ -213,44 +206,5 @@ public class CsharpController {
         radioButton4.setVisible(false);
         answerButton.setVisible(false);
     }
-    /*public static void serialize() throws Exception {
-        ArrayList<Question> questions = new ArrayList<Question>();
-        questions.add(new Question("What is a correct syntax to output \"Hello World\" in C#?", new String[]{
-                "print(\"Hello World\")","cout << \"Hello World\";","console.log(\"Hello World\");","Console.WriteLine(\"Hello World\");"}));
-        questions.add(new Question("Which operator can be used to compare two values?", new String[]{
-                "=", "<>", "><","=="}));
-        FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME);
-        XMLEncoder xmlEncoder = new XMLEncoder(fileOutputStream);
-        Question question = new Question("Which data type is used to create a variable that should store text?", new String[]{
-                "myString", "str", "Txt", "string"});
-        question.setName("How do you create a variable with the numeric value 5?");
-        question.setAnswers(new String[]{"num x = 5", "x = 5;", "double x = 5;", "int x = 5;"});
-        xmlEncoder.writeObject(question);
-        xmlEncoder.flush();
-        question.setName("Which property can be used to find the length of a string?");
-        question.setAnswers(new String[]{"length", "length()", "getLength()", "Length"});
-        xmlEncoder.writeObject(question);
-        xmlEncoder.writeObject(new Question());
-        xmlEncoder.writeObject(new Question("Which keyword is used to create a class in C#?", new String[]{
-                "className", "MyClass", "class()", "class"}));
-        for (Question  q: questions) {
-            xmlEncoder.writeObject(q);
-        }
-        xmlEncoder.close();
-        fileOutputStream.close();
-    }
-    public static void deserialize() throws Exception {
-        FileInputStream fileInputStream = new FileInputStream(FILE_NAME);
-        XMLDecoder xmlDecoder = new XMLDecoder(new BufferedInputStream(fileInputStream));
-        while (fileInputStream.available()>0)
-        try {
-            Question question = (Question) xmlDecoder.readObject();
-        }
-        catch (Exception e){
-            break;
-        }
-        xmlDecoder.close();
-        fileInputStream.close();
-    }*/
 }
 
