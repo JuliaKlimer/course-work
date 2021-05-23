@@ -44,6 +44,7 @@ public class MainController {
                 Parent root = loader.getRoot();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
+                stage.setTitle("Simple Testing");
                 stage.show();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -58,6 +59,7 @@ public class MainController {
                 Parent root = loader.getRoot();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
+                stage.setTitle("Simple Testing");
                 stage.show();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -72,6 +74,22 @@ public class MainController {
                 Parent root = loader.getRoot();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
+                stage.setTitle("Simple Testing");
+                stage.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        newButton.setOnAction(actionEvent -> {
+            try {
+                newButton.getScene().getWindow().hide();
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/sample/UI/sampleNew.fxml"));
+                loader.load();
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Simple Testing");
                 stage.show();
             } catch (Exception e) {
                 e.printStackTrace();

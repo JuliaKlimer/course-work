@@ -156,6 +156,7 @@ public class OopController {
                     Parent root = loader.getRoot();
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
+                    stage.setTitle("Simple Testing");
                     stage.showAndWait();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -183,6 +184,7 @@ public class OopController {
                 Parent root = loader.getRoot();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
+                stage.setTitle("Simple Testing");
                 stage.showAndWait();
             } catch (Exception e) {
                 e.printStackTrace();
