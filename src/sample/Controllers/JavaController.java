@@ -98,7 +98,7 @@ public class JavaController {
         oopButton.setVisible(false);
         newButton.setVisible(false);
         labelHidden.setVisible(false);
-        chooseLabel.setText("Good luck!");
+        //chooseLabel.setText("Good luck!");
         labelHidden.setVisible(false);
         currentCorrectAnswer = questions[currentQuestion].correctAnswer();
         answerButton.setOnAction(event -> {
@@ -147,7 +147,7 @@ public class JavaController {
         });
         mainButton.setOnAction(actionEvent -> {
             if (currentQuestion + 1 != questions.length){
-                modalWindow();
+               modalWindow();
             } else {
                 try {
                     mainButton.getScene().getWindow().hide();
@@ -164,25 +164,22 @@ public class JavaController {
             }
         });
     }
-    private static void modalWindow(){
+    private void modalWindow(){
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         Pane pane = new Pane();
-        Label alertLabel = new Label();
-        alertLabel.setText("Are you sure you want to exit?");
-        alertLabel.setVisible(true);
         Button yesButton = new Button("Yes");
         yesButton.setLayoutX(60);
-        yesButton.setLayoutY(100);
+        yesButton.setLayoutY(45);
         Button noButton = new Button("No");
         noButton.setLayoutX(120);
-        noButton.setLayoutY(100);
+        noButton.setLayoutY(45);
         noButton.setOnAction(event -> window.close());
-        yesButton.setOnAction(event -> {
+        yesButton.setOnAction(actionEvent -> {
             try {
-                noButton.getScene().getWindow().hide();
+                yesButton.getScene().getWindow().hide();
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(CsharpController.class.getResource("/sample/UI/sampleMain.fxml"));
+                loader.setLocation(getClass().getResource("/sample/UI/sampleMain.fxml"));
                 loader.load();
                 Parent root = loader.getRoot();
                 Stage stage = new Stage();
@@ -193,8 +190,8 @@ public class JavaController {
             }
         });
         pane.getChildren().addAll(yesButton,noButton);
-        Scene scene = new Scene(pane,200,200);
-        window.setTitle("Alert");
+        Scene scene = new Scene(pane,230,130);
+        window.setTitle("Are you sure you want to exit?");
         window.setScene(scene);
         window.setResizable(false);
         window.showAndWait();
