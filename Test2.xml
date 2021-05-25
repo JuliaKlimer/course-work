@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="15.0.2" class="java.beans.XMLDecoder">
+ <array class="sample.Question" length="10">
+  <void index="0">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>print(&quot;Hello World&quot;)</string>
+      </void>
+      <void index="1">
+       <string>echo(&quot;Hello World&quot;)</string>
+      </void>
+      <void index="2">
+       <string>Console.WriteLine(&quot;Hello World&quot;);</string>
+      </void>
+      <void index="3">
+       <string>System.out.println(&quot;Hello World&quot;);</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>What is a correct syntax to output &quot;Hello World&quot; in Java?</string>
+    </void>
+   </object>
+  </void>
+  <void index="1">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>x = 2.8f;</string>
+      </void>
+      <void index="1">
+       <string>byte x = 2.8f;</string>
+      </void>
+      <void index="2">
+       <string>float x = 2.8;</string>
+      </void>
+      <void index="3">
+       <string>float x = 2.8f;</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>How do you create a variable with the floating number 2.8?</string>
+    </void>
+   </object>
+  </void>
+  <void index="2">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>tuc</string>
+      </void>
+      <void index="1">
+       <string>UpperCase</string>
+      </void>
+      <void index="2">
+       <string>touppercase</string>
+      </void>
+      <void index="3">
+       <string>toUpperCase</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>Which method can be used to return a string in upper case letters?</string>
+    </void>
+   </object>
+  </void>
+  <void index="3">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>{}</string>
+      </void>
+      <void index="1">
+       <string>()</string>
+      </void>
+      <void index="2">
+       <string>None of this signs</string>
+      </void>
+      <void index="3">
+       <string>[]</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>To declare an array in Java, define the variable type with:</string>
+    </void>
+   </object>
+  </void>
+  <void index="4">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>getlib</string>
+      </void>
+      <void index="1">
+       <string>lib</string>
+      </void>
+      <void index="2">
+       <string>package</string>
+      </void>
+      <void index="3">
+       <string>import</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>Which keyword is used to import a package from the Java API library?</string>
+    </void>
+   </object>
+  </void>
+  <void index="5">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>MainError</string>
+      </void>
+      <void index="1">
+       <string>MainException</string>
+      </void>
+      <void index="2">
+       <string>Catchable</string>
+      </void>
+      <void index="3">
+       <string>Throwable</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>What is the parent of Error and Exception classes?</string>
+    </void>
+   </object>
+  </void>
+  <void index="6">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>new class MyClass {}</string>
+      </void>
+      <void index="1">
+       <string>MyClass extends Class {}</string>
+      </void>
+      <void index="2">
+       <string>select * from class MyClass {}</string>
+      </void>
+      <void index="3">
+       <string>class MyClass {}</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>How to declare class in program?</string>
+    </void>
+   </object>
+  </void>
+  <void index="7">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>if x &gt; y then:</string>
+      </void>
+      <void index="1">
+       <string>if x &gt; y:</string>
+      </void>
+      <void index="2">
+       <string>(x &gt; y) if</string>
+      </void>
+      <void index="3">
+       <string>if (x &gt; y)</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>How do you start writing an if statement in Java?</string>
+    </void>
+   </object>
+  </void>
+  <void index="8">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>Math.maxNum(x,y)</string>
+      </void>
+      <void index="1">
+       <string>Math.maximum(x,y)</string>
+      </void>
+      <void index="2">
+       <string>Math.largest(x,y)</string>
+      </void>
+      <void index="3">
+       <string>Math.max(x,y)</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>Which method can be used to find the highest value of x and y?</string>
+    </void>
+   </object>
+  </void>
+  <void index="9">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>class MyClass = new myObj();</string>
+      </void>
+      <void index="1">
+       <string>new myObj = MyClass();</string>
+      </void>
+      <void index="2">
+       <string>class myObj = new MyClass();</string>
+      </void>
+      <void index="3">
+       <string>MyClass myObj = new MyClass();</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>What is the correct way to create an object called myObj of MyClass?</string>
+    </void>
+   </object>
+  </void>
+ </array>
+</java>

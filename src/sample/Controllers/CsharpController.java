@@ -15,7 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.Question;
 
-public class CsharpController {
+public class CsharpController implements Serializable{
 
     @FXML
     private ResourceBundle resources;
@@ -65,9 +65,12 @@ public class CsharpController {
     @FXML
     private Label labelHidden;
 
-    //private static final String FILE_NAME = "Test1.xml";
+    private static final String FILE_NAME_CSHARP = "Test1.xml";
+    //номер текущего вопроса, кол-во правильных ответов
+    private int currentQuestion = 0, correctAnswer;
+    //текущий правильный ответ
+    private String currentCorrectAnswer;
 
-    //масссив вопросов и ответов
     private Question[] questions = new Question[] {
             new Question("What is a correct syntax to output \"Hello World\" in C#?", new String[]{
                     "print(\"Hello World\")","cout << \"Hello World\";","console.log(\"Hello World\");","Console.WriteLine(\"Hello World\");"}),
@@ -89,26 +92,19 @@ public class CsharpController {
                     "return", "stop", "exit", "break"}),
             new Question("Which keyword is used to return a value inside a method?", new String[]{
                     "get", "void", "break", "return"})
-
     };
-    //номер текущего вопроса, кол-во правильных ответов
-    private int currentQuestion = 0, correctAnswer;
-    //текущий правильный ответ
-    private String currentCorrectAnswer;
 
-    //Question[] questions = new Question[]{};
     @FXML
     void initialize() throws Exception {
-        //serialize();
-        //deserialize();
+        serialize(questions);
+        deserialize();
         csharpButton.setVisible(false);
         javaButton.setVisible(false);
         oopButton.setVisible(false);
         newButton.setVisible(false);
-        labelHidden.setVisible(false);
         chooseLabel.setText("Good luck!");
         labelHidden.setVisible(false);
-        currentCorrectAnswer = questions[currentQuestion].correctAnswer();
+        currentCorrectAnswer = questions[correctAnswer].correctAnswer();
         answerButton.setOnAction(event -> {
             //кнопка, выбранная пользователем
             RadioButton selectedRadio = (RadioButton) answers.getSelectedToggle();
@@ -128,7 +124,7 @@ public class CsharpController {
                 currentQuestion++;
                 currentCorrectAnswer = questions[currentQuestion].correctAnswer();//новый номер верного ответа
                 labelQuestion.setText(questions[currentQuestion].getName());//меняем текст на новый
-                String [] answers = questions[currentQuestion].getAnswers();//получаем массив ответов
+                String[] answers = questions[currentQuestion].getAnswers();//получаем массив ответов
                 List<String> stringList = Arrays.asList(answers);//преобразовываем в список
                 Collections.shuffle(stringList);//сортировка в рандомном порядке
                 radioButton1.setText(stringList.get(0));//передаем текст ответов в радиокнопки
@@ -187,14 +183,13 @@ public class CsharpController {
         yesButton.setOnAction(actionEvent -> {
             try {
                 yesButton.getScene().getWindow().hide();
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/sample/UI/sampleMain.fxml"));
-                loader.load();
-                Parent root = loader.getRoot();
+                csharpButton.getScene().getWindow().hide();
+                Parent root = null;
+                root = FXMLLoader.load(getClass().getResource("/sample/UI/sampleMain.fxml"));
                 Stage stage = new Stage();
-                stage.setScene(new Scene(root));
                 stage.setTitle("Simple Testing");
-                stage.showAndWait();
+                stage.setScene(new Scene(root));
+                stage.show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -213,44 +208,20 @@ public class CsharpController {
         radioButton4.setVisible(false);
         answerButton.setVisible(false);
     }
-    /*public static void serialize() throws Exception {
-        ArrayList<Question> questions = new ArrayList<Question>();
-        questions.add(new Question("What is a correct syntax to output \"Hello World\" in C#?", new String[]{
-                "print(\"Hello World\")","cout << \"Hello World\";","console.log(\"Hello World\");","Console.WriteLine(\"Hello World\");"}));
-        questions.add(new Question("Which operator can be used to compare two values?", new String[]{
-                "=", "<>", "><","=="}));
-        FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME);
+    public void serialize(Question[] questions) throws Exception {
+        FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME_CSHARP);
         XMLEncoder xmlEncoder = new XMLEncoder(fileOutputStream);
-        Question question = new Question("Which data type is used to create a variable that should store text?", new String[]{
-                "myString", "str", "Txt", "string"});
-        question.setName("How do you create a variable with the numeric value 5?");
-        question.setAnswers(new String[]{"num x = 5", "x = 5;", "double x = 5;", "int x = 5;"});
-        xmlEncoder.writeObject(question);
-        xmlEncoder.flush();
-        question.setName("Which property can be used to find the length of a string?");
-        question.setAnswers(new String[]{"length", "length()", "getLength()", "Length"});
-        xmlEncoder.writeObject(question);
-        xmlEncoder.writeObject(new Question());
-        xmlEncoder.writeObject(new Question("Which keyword is used to create a class in C#?", new String[]{
-                "className", "MyClass", "class()", "class"}));
-        for (Question  q: questions) {
-            xmlEncoder.writeObject(q);
-        }
+        xmlEncoder.writeObject(questions);
         xmlEncoder.close();
         fileOutputStream.close();
     }
-    public static void deserialize() throws Exception {
-        FileInputStream fileInputStream = new FileInputStream(FILE_NAME);
+    public Question[] deserialize() throws Exception {
+        FileInputStream fileInputStream = new FileInputStream(FILE_NAME_CSHARP);
         XMLDecoder xmlDecoder = new XMLDecoder(new BufferedInputStream(fileInputStream));
-        while (fileInputStream.available()>0)
-        try {
-            Question question = (Question) xmlDecoder.readObject();
-        }
-        catch (Exception e){
-            break;
-        }
+        xmlDecoder.readObject();
         xmlDecoder.close();
         fileInputStream.close();
-    }*/
+        return questions;
+    }
 }
 

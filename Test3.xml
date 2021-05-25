@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="15.0.2" class="java.beans.XMLDecoder">
+ <array class="sample.Question" length="10">
+  <void index="0">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>Only oriented programming</string>
+      </void>
+      <void index="1">
+       <string>Only object program</string>
+      </void>
+      <void index="2">
+       <string>Orient-objective programming</string>
+      </void>
+      <void index="3">
+       <string>Object-oriented programming</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>OOP is short for ...</string>
+    </void>
+   </object>
+  </void>
+  <void index="1">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>To build a user interface</string>
+      </void>
+      <void index="1">
+       <string>To create a sub class</string>
+      </void>
+      <void index="2">
+       <string>Free memory</string>
+      </void>
+      <void index="3">
+       <string>Initialize a newly created object</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>Constructors are used to: </string>
+    </void>
+   </object>
+  </void>
+  <void index="2">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>class</string>
+      </void>
+      <void index="1">
+       <string>use</string>
+      </void>
+      <void index="2">
+       <string>this</string>
+      </void>
+      <void index="3">
+       <string>super</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>Which keyword is used to access the method from the superclass?</string>
+    </void>
+   </object>
+  </void>
+  <void index="3">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>Inheritance</string>
+      </void>
+      <void index="1">
+       <string>Data hiding</string>
+      </void>
+      <void index="2">
+       <string>Abstraction</string>
+      </void>
+      <void index="3">
+       <string>Encapsulation</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>Information Hiding can also be termed as ...</string>
+    </void>
+   </object>
+  </void>
+  <void index="4">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>Encapsulation and Abstraction</string>
+      </void>
+      <void index="1">
+       <string>Inheritance and Encapsulation</string>
+      </void>
+      <void index="2">
+       <string>Polymorphism, Encapsulation and Inheritance</string>
+      </void>
+      <void index="3">
+       <string>Encapsulation, Inheritance, Polymorphism and Abstraction</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>What are the main OOP principles?</string>
+    </void>
+   </object>
+  </void>
+  <void index="5">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>Both this names are wrong</string>
+      </void>
+      <void index="1">
+       <string>You can use both names</string>
+      </void>
+      <void index="2">
+       <string>Uninstallable class</string>
+      </void>
+      <void index="3">
+       <string>Abstract class</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>How can you call a class which cannot be instantiated?</string>
+    </void>
+   </object>
+  </void>
+  <void index="6">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>Such kind of operator doesn&apos;t exist</string>
+      </void>
+      <void index="1">
+       <string>Universal operator</string>
+      </void>
+      <void index="2">
+       <string>Binary operator</string>
+      </void>
+      <void index="3">
+       <string>Ternary operator</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>Name of the operator which takes tree arguments is ...</string>
+    </void>
+   </object>
+  </void>
+  <void index="7">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>&apos;This&apos; pointer doesn&apos;t exist</string>
+      </void>
+      <void index="1">
+       <string>&apos;This&apos; pointer refers to the current method</string>
+      </void>
+      <void index="2">
+       <string>&apos;This&apos; pointer refers to the current class</string>
+      </void>
+      <void index="3">
+       <string>&apos;This&apos; pointer refers to the current object of a class</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>What is ‘this’ pointer?</string>
+    </void>
+   </object>
+  </void>
+  <void index="8">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>Polymorphism</string>
+      </void>
+      <void index="1">
+       <string>Abstraction</string>
+      </void>
+      <void index="2">
+       <string>Encapsulation</string>
+      </void>
+      <void index="3">
+       <string>Inheritance</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>Which OOPS concept is used as a reuse mechanism?</string>
+    </void>
+   </object>
+  </void>
+  <void index="9">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>class MyClass = new myObj();</string>
+      </void>
+      <void index="1">
+       <string>new myObj = MyClass();</string>
+      </void>
+      <void index="2">
+       <string>class myObj = new MyClass();</string>
+      </void>
+      <void index="3">
+       <string>MyClass myObj = new MyClass();</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>What is the correct way to create an object called myObj of MyClass?</string>
+    </void>
+   </object>
+  </void>
+ </array>
+</java>

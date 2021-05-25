@@ -1,5 +1,10 @@
 package sample.Controllers;
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
@@ -66,8 +71,6 @@ public class NewController {
     private Label labelHidden;
 
     private Question[] questions = new Question[] {
-            new Question("Which keyword is used to import a package from the Java API library?", new String[]{
-                    "getlib", "lib", "package", "import"}),
             new Question("What is a correct syntax to output \"Hello World\" in Java?", new String[]{
                     "print(\"Hello World\")","echo(\"Hello World\")","Console.WriteLine(\"Hello World\");", "System.out.println(\"Hello World\");"}),
             new Question("How do you create a variable with the floating number 2.8?", new String[]{
@@ -103,18 +106,39 @@ public class NewController {
             new Question("Which statement is used to stop a loop?", new String[]{
                     "return", "stop", "exit", "break"}),
             new Question("Which keyword is used to return a value inside a method?", new String[]{
-                    "get", "void", "break", "return"})
+                    "get", "void", "break", "return"}),
+            new Question("OOP is short for ...", new String[]{
+                    "Only oriented programming","Only object program","Orient-objective programming", "Object-oriented programming"}),
+            new Question("Constructors are used to: ", new String[]{
+                    "To build a user interface", "To create a sub class", "Free memory","Initialize a newly created object"}),
+            new Question("Which keyword is used to access the method from the superclass?", new String[]{
+                    "class", "use", "this", "super"}),
+            new Question("Information Hiding can also be termed as ...", new String[]{
+                    "Inheritance", "Data hiding", "Abstraction", "Encapsulation"}),
+            new Question("What are the main OOP principles?", new String[]{
+                    "Encapsulation and Abstraction", "Inheritance and Encapsulation", "Polymorphism, Encapsulation and Inheritance", "Encapsulation, Inheritance, Polymorphism and Abstraction"}),
+            new Question("How can you call a class which cannot be instantiated?", new String[]{
+                    "Both this names are wrong", "You can use both names", "Uninstallable class", "Abstract class"}),
+            new Question("Name of the operator which takes tree arguments is ...", new String[]{
+                    "Such kind of operator doesn't exist", "Universal operator", "Binary operator", "Ternary operator"}),
+            new Question("What is ‘this’ pointer?", new String[]{
+                    "\'This\' pointer doesn't exist", "\'This\' pointer refers to the current method", "\'This\' pointer refers to the current class", "\'This\' pointer refers to the current object of a class"}),
+            new Question("Which OOPS concept is used as a reuse mechanism?", new String[]{
+                    "Polymorphism", "Abstraction", "Encapsulation", "Inheritance"})
     };
+
+    private static final String FILE_NAME_NEW = "Test4.xml";
     private int currentQuestion = 0, correctAnswer;
     private String currentCorrectAnswer;
 
     @FXML
-    void initialize() {
+    void initialize() throws Exception {
+        serialize(questions);
+        deserialize();
         csharpButton.setVisible(false);
         javaButton.setVisible(false);
         oopButton.setVisible(false);
         newButton.setVisible(false);
-        labelHidden.setVisible(false);
         chooseLabel.setText("Good luck!");
         labelHidden.setVisible(false);
         List<Question> questionList = Arrays.asList(questions);//преобразовываем в список
@@ -150,15 +174,15 @@ public class NewController {
             } else {
                 hideAllControls();
                 labelQuestion.setText("You answered " + correctAnswer + " questions");//вывод кол-ва ответов, на которые пользователь ответил правильно
-                if (correctAnswer <= 3){
+                if (correctAnswer <= 10){
                     labelHidden.setText("Sorry, you should improve your skills");
                     labelHidden.setVisible(true);
                 }
-                else if (correctAnswer > 3 && correctAnswer <= 7){
+                else if (correctAnswer > 10 && correctAnswer <= 20){
                     labelHidden.setText("You have good knowledge of programming");
                     labelHidden.setVisible(true);
                 }
-                else if (correctAnswer > 7){
+                else if (correctAnswer > 20){
                     labelHidden.setText("You can be proud yourself!");
                     labelHidden.setVisible(true);
                 }
@@ -197,14 +221,13 @@ public class NewController {
         yesButton.setOnAction(actionEvent -> {
             try {
                 yesButton.getScene().getWindow().hide();
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/sample/UI/sampleMain.fxml"));
-                loader.load();
-                Parent root = loader.getRoot();
+                newButton.getScene().getWindow().hide();
+                Parent root = null;
+                root = FXMLLoader.load(getClass().getResource("/sample/UI/sampleMain.fxml"));
                 Stage stage = new Stage();
-                stage.setScene(new Scene(root));
                 stage.setTitle("Simple Testing");
-                stage.showAndWait();
+                stage.setScene(new Scene(root));
+                stage.show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -222,6 +245,21 @@ public class NewController {
         radioButton3.setVisible(false);
         radioButton4.setVisible(false);
         answerButton.setVisible(false);
+    }
+    public void serialize(Question[] questions) throws Exception {
+        FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME_NEW);
+        XMLEncoder xmlEncoder = new XMLEncoder(fileOutputStream);
+        xmlEncoder.writeObject(questions);
+        xmlEncoder.close();
+        fileOutputStream.close();
+    }
+    public Question[] deserialize() throws Exception {
+        FileInputStream fileInputStream = new FileInputStream(FILE_NAME_NEW);
+        XMLDecoder xmlDecoder = new XMLDecoder(new BufferedInputStream(fileInputStream));
+        xmlDecoder.readObject();
+        xmlDecoder.close();
+        fileInputStream.close();
+        return questions;
     }
 }
 

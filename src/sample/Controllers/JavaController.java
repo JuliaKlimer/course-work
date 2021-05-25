@@ -1,5 +1,10 @@
 package sample.Controllers;
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
@@ -88,17 +93,19 @@ public class JavaController {
                     "class MyClass = new myObj();", "new myObj = MyClass();", "class myObj = new MyClass();", "MyClass myObj = new MyClass();"})
     };
 
+    private static final String FILE_NAME_JAVA = "Test2.xml";
     private int currentQuestion = 0, correctAnswer;
     private String currentCorrectAnswer;
 
     @FXML
-    void initialize() {
+    void initialize() throws Exception {
+        serialize(questions);
+        deserialize();
         csharpButton.setVisible(false);
         javaButton.setVisible(false);
         oopButton.setVisible(false);
         newButton.setVisible(false);
-        labelHidden.setVisible(false);
-        //chooseLabel.setText("Good luck!");
+        chooseLabel.setText("Good luck!");
         labelHidden.setVisible(false);
         currentCorrectAnswer = questions[currentQuestion].correctAnswer();
         answerButton.setOnAction(event -> {
@@ -179,14 +186,13 @@ public class JavaController {
         yesButton.setOnAction(actionEvent -> {
             try {
                 yesButton.getScene().getWindow().hide();
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/sample/UI/sampleMain.fxml"));
-                loader.load();
-                Parent root = loader.getRoot();
+                javaButton.getScene().getWindow().hide();
+                Parent root = null;
+                root = FXMLLoader.load(getClass().getResource("/sample/UI/sampleMain.fxml"));
                 Stage stage = new Stage();
-                stage.setScene(new Scene(root));
                 stage.setTitle("Simple Testing");
-                stage.showAndWait();
+                stage.setScene(new Scene(root));
+                stage.show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -204,6 +210,21 @@ public class JavaController {
         radioButton3.setVisible(false);
         radioButton4.setVisible(false);
         answerButton.setVisible(false);
+    }
+    public void serialize(Question[] questions) throws Exception {
+        FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME_JAVA);
+        XMLEncoder xmlEncoder = new XMLEncoder(fileOutputStream);
+        xmlEncoder.writeObject(questions);
+        xmlEncoder.close();
+        fileOutputStream.close();
+    }
+    public Question[] deserialize() throws Exception {
+        FileInputStream fileInputStream = new FileInputStream(FILE_NAME_JAVA);
+        XMLDecoder xmlDecoder = new XMLDecoder(new BufferedInputStream(fileInputStream));
+        xmlDecoder.readObject();
+        xmlDecoder.close();
+        fileInputStream.close();
+        return questions;
     }
 }
 

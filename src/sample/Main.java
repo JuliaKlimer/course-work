@@ -11,7 +11,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("UI/sampleMain.fxml"));
         primaryStage.setTitle("Simple Testing");
-        primaryStage.setScene(new Scene(root, 710, 400));
+        primaryStage.setScene(new Scene(root, 720, 447));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

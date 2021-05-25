@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="15.0.2" class="java.beans.XMLDecoder">
+ <array class="sample.Question" length="10">
+  <void index="0">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>print(&quot;Hello World&quot;)</string>
+      </void>
+      <void index="1">
+       <string>cout &lt;&lt; &quot;Hello World&quot;;</string>
+      </void>
+      <void index="2">
+       <string>console.log(&quot;Hello World&quot;);</string>
+      </void>
+      <void index="3">
+       <string>Console.WriteLine(&quot;Hello World&quot;);</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>What is a correct syntax to output &quot;Hello World&quot; in C#?</string>
+    </void>
+   </object>
+  </void>
+  <void index="1">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>=</string>
+      </void>
+      <void index="1">
+       <string>&lt;&gt;</string>
+      </void>
+      <void index="2">
+       <string>&gt;&lt;</string>
+      </void>
+      <void index="3">
+       <string>==</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>Which operator can be used to compare two values?</string>
+    </void>
+   </object>
+  </void>
+  <void index="2">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>myString</string>
+      </void>
+      <void index="1">
+       <string>str</string>
+      </void>
+      <void index="2">
+       <string>Txt</string>
+      </void>
+      <void index="3">
+       <string>string</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>Which data type is used to create a variable that should store text?</string>
+    </void>
+   </object>
+  </void>
+  <void index="3">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>num x = 5</string>
+      </void>
+      <void index="1">
+       <string>x = 5;</string>
+      </void>
+      <void index="2">
+       <string>double x = 5;</string>
+      </void>
+      <void index="3">
+       <string>int x = 5;</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>How do you create a variable with the numeric value 5?</string>
+    </void>
+   </object>
+  </void>
+  <void index="4">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>length</string>
+      </void>
+      <void index="1">
+       <string>length()</string>
+      </void>
+      <void index="2">
+       <string>getLength()</string>
+      </void>
+      <void index="3">
+       <string>Length</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>Which property can be used to find the length of a string?</string>
+    </void>
+   </object>
+  </void>
+  <void index="5">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>className</string>
+      </void>
+      <void index="1">
+       <string>MyClass</string>
+      </void>
+      <void index="2">
+       <string>class()</string>
+      </void>
+      <void index="3">
+       <string>class</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>Which keyword is used to create a class in C#?</string>
+    </void>
+   </object>
+  </void>
+  <void index="6">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>MyMethod.</string>
+      </void>
+      <void index="1">
+       <string>myMethod[]</string>
+      </void>
+      <void index="2">
+       <string>(MyMethod)</string>
+      </void>
+      <void index="3">
+       <string>MyMethod()</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>How do you create a method in C#?</string>
+    </void>
+   </object>
+  </void>
+  <void index="7">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>while x &gt; y {</string>
+      </void>
+      <void index="1">
+       <string>x &gt; y while {</string>
+      </void>
+      <void index="2">
+       <string>while x &gt; y:</string>
+      </void>
+      <void index="3">
+       <string>while (x &gt; y)</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>How do you start writing a while loop in C#?</string>
+    </void>
+   </object>
+  </void>
+  <void index="8">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>return</string>
+      </void>
+      <void index="1">
+       <string>stop</string>
+      </void>
+      <void index="2">
+       <string>exit</string>
+      </void>
+      <void index="3">
+       <string>break</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>Which statement is used to stop a loop?</string>
+    </void>
+   </object>
+  </void>
+  <void index="9">
+   <object class="sample.Question">
+    <void property="answers">
+     <array class="java.lang.String" length="4">
+      <void index="0">
+       <string>get</string>
+      </void>
+      <void index="1">
+       <string>void</string>
+      </void>
+      <void index="2">
+       <string>break</string>
+      </void>
+      <void index="3">
+       <string>return</string>
+      </void>
+     </array>
+    </void>
+    <void property="name">
+     <string>Which keyword is used to return a value inside a method?</string>
+    </void>
+   </object>
+  </void>
+ </array>
+</java>

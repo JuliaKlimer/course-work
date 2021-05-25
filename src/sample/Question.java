@@ -1,6 +1,7 @@
 package sample;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Question implements Serializable {
@@ -33,11 +34,4 @@ public class Question implements Serializable {
         return this.answers[answers.length-1];
     }
 
-    @Override
-    public String toString() {
-        return "Question{" +
-                "name='" + name + '\'' +
-                ", answers=" + Arrays.toString(answers) +
-                '}';
-    }
 }

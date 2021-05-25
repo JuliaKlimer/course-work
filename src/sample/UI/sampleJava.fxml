@@ -16,7 +16,7 @@
         </Label>
         <AnchorPane layoutY="-5.0" prefHeight="453.0" prefWidth="200.0" style="-fx-background-color: white; -fx-border-color: #9C9DA3;">
             <children>
-                <Label fx:id="chooseLable" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="37.0" prefHeight="43.0" prefWidth="146.0" text="Choose test" textAlignment="CENTER">
+                <Label fx:id="chooseLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="27.0" layoutY="37.0" prefHeight="43.0" prefWidth="146.0" text="Choose test" textAlignment="CENTER">
                     <font>
                         <Font name="Candara Light" size="23.0" />
                     </font>

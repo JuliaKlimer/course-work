@@ -1,5 +1,10 @@
 package sample.Controllers;
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
@@ -22,6 +27,7 @@ public class OopController {
 
     @FXML
     private URL location;
+
 
     @FXML
     private Button csharpButton;
@@ -70,7 +76,7 @@ public class OopController {
                     "Only oriented programming","Only object program","Orient-objective programming", "Object-oriented programming"}),
             new Question("Constructors are used to: ", new String[]{
                     "To build a user interface", "To create a sub class", "Free memory","Initialize a newly created object"}),
-            new Question("Which keyword is used to access the method or member variables from the superclass?", new String[]{
+            new Question("Which keyword is used to access the method from the superclass?", new String[]{
                     "class", "use", "this", "super"}),
             new Question("Information Hiding can also be termed as ...", new String[]{
                     "Inheritance", "Data hiding", "Abstraction", "Encapsulation"}),
@@ -84,15 +90,18 @@ public class OopController {
                     "\'This\' pointer doesn't exist", "\'This\' pointer refers to the current method", "\'This\' pointer refers to the current class", "\'This\' pointer refers to the current object of a class"}),
             new Question("Which OOPS concept is used as a reuse mechanism?", new String[]{
                     "Polymorphism", "Abstraction", "Encapsulation", "Inheritance"}),
-            new Question("What is the correct way to create an object called myObj of MyClass (in Java/C#)?", new String[]{
+            new Question("What is the correct way to create an object called myObj of MyClass?", new String[]{
                     "class MyClass = new myObj();", "new myObj = MyClass();", "class myObj = new MyClass();", "MyClass myObj = new MyClass();"})
     };
 
+    private static final String FILE_NAME_OOP = "Test3.xml";
     private int currentQuestion = 0, correctAnswer;
     private String currentCorrectAnswer;
 
     @FXML
-    void initialize() {
+    void initialize() throws Exception {
+        serialize(questions);
+        deserialize();
         csharpButton.setVisible(false);
         javaButton.setVisible(false);
         oopButton.setVisible(false);
@@ -178,14 +187,13 @@ public class OopController {
         yesButton.setOnAction(actionEvent -> {
             try {
                 yesButton.getScene().getWindow().hide();
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/sample/UI/sampleMain.fxml"));
-                loader.load();
-                Parent root = loader.getRoot();
+                oopButton.getScene().getWindow().hide();
+                Parent root = null;
+                root = FXMLLoader.load(getClass().getResource("/sample/UI/sampleMain.fxml"));
                 Stage stage = new Stage();
-                stage.setScene(new Scene(root));
                 stage.setTitle("Simple Testing");
-                stage.showAndWait();
+                stage.setScene(new Scene(root));
+                stage.show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -203,6 +211,21 @@ public class OopController {
         radioButton3.setVisible(false);
         radioButton4.setVisible(false);
         answerButton.setVisible(false);
+    }
+    public void serialize(Question[] questions) throws Exception {
+        FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME_OOP);
+        XMLEncoder xmlEncoder = new XMLEncoder(fileOutputStream);
+        xmlEncoder.writeObject(questions);
+        xmlEncoder.close();
+        fileOutputStream.close();
+    }
+    public Question[] deserialize() throws Exception {
+        FileInputStream fileInputStream = new FileInputStream(FILE_NAME_OOP);
+        XMLDecoder xmlDecoder = new XMLDecoder(new BufferedInputStream(fileInputStream));
+        xmlDecoder.readObject();
+        xmlDecoder.close();
+        fileInputStream.close();
+        return questions;
     }
 }
 
