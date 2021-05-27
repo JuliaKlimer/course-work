@@ -66,9 +66,9 @@ public class CsharpController implements Serializable{
     private Label labelHidden;
 
     private static final String FILE_NAME_CSHARP = "Test1.xml";
-    //номер текущего вопроса, кол-во правильных ответов
+
     private int currentQuestion = 0, correctAnswer;
-    //текущий правильный ответ
+
     private String currentCorrectAnswer;
 
     private Question[] questions = new Question[] {
@@ -106,7 +106,6 @@ public class CsharpController implements Serializable{
         labelHidden.setVisible(false);
         currentCorrectAnswer = questions[correctAnswer].correctAnswer();
         answerButton.setOnAction(event -> {
-            //кнопка, выбранная пользователем
             RadioButton selectedRadio = (RadioButton) answers.getSelectedToggle();
             if (selectedRadio == null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -115,26 +114,24 @@ public class CsharpController implements Serializable{
                 alert.showAndWait();
                 selectedRadio.setSelected(true);
             }else {
-                //получаем текст ответа
                 String toggleGroupValue = selectedRadio.getText();
-                //проверяем совпадает ли выбранный ответ с правильным
                 if (toggleGroupValue.equals(currentCorrectAnswer)) correctAnswer++;
             }
-            if (currentQuestion + 1 != questions.length){ //если это не последний вопрос, то у величиваем номер текущего вопроса
+            if (currentQuestion + 1 != questions.length){
                 currentQuestion++;
-                currentCorrectAnswer = questions[currentQuestion].correctAnswer();//новый номер верного ответа
-                labelQuestion.setText(questions[currentQuestion].getName());//меняем текст на новый
-                String[] answers = questions[currentQuestion].getAnswers();//получаем массив ответов
-                List<String> stringList = Arrays.asList(answers);//преобразовываем в список
-                Collections.shuffle(stringList);//сортировка в рандомном порядке
-                radioButton1.setText(stringList.get(0));//передаем текст ответов в радиокнопки
+                currentCorrectAnswer = questions[currentQuestion].correctAnswer();
+                labelQuestion.setText(questions[currentQuestion].getName());
+                String[] answers = questions[currentQuestion].getAnswers();
+                List<String> stringList = Arrays.asList(answers);
+                Collections.shuffle(stringList);
+                radioButton1.setText(stringList.get(0));
                 radioButton2.setText(stringList.get(1));
                 radioButton3.setText(stringList.get(2));
                 radioButton4.setText(stringList.get(3));
-                selectedRadio.setSelected(false);//снимаем выделение пользователем
+                selectedRadio.setSelected(false);
             } else {
                 hideAllControls();
-                labelQuestion.setText("You answered " + correctAnswer + " questions");//вывод кол-ва ответов, на которые пользователь ответил правильно
+                labelQuestion.setText("You answered " + correctAnswer + " questions");
                 if (correctAnswer <= 3){
                     labelHidden.setText("Sorry, you should improve your skills");
                     labelHidden.setVisible(true);
@@ -202,7 +199,7 @@ public class CsharpController implements Serializable{
         window.showAndWait();
     }
     private void hideAllControls() {
-        radioButton1.setVisible(false);//если вопросы закончились, то скрываем кнопки
+        radioButton1.setVisible(false);
         radioButton2.setVisible(false);
         radioButton3.setVisible(false);
         radioButton4.setVisible(false);
@@ -224,4 +221,3 @@ public class CsharpController implements Serializable{
         return questions;
     }
 }
-

@@ -70,6 +70,12 @@ public class NewController {
     @FXML
     private Label labelHidden;
 
+    private static final String FILE_NAME_NEW = "Test4.xml";
+
+    private int currentQuestion = 0, correctAnswer;
+
+    private String currentCorrectAnswer;
+
     private Question[] questions = new Question[] {
             new Question("What is a correct syntax to output \"Hello World\" in Java?", new String[]{
                     "print(\"Hello World\")","echo(\"Hello World\")","Console.WriteLine(\"Hello World\");", "System.out.println(\"Hello World\");"}),
@@ -127,10 +133,6 @@ public class NewController {
                     "Polymorphism", "Abstraction", "Encapsulation", "Inheritance"})
     };
 
-    private static final String FILE_NAME_NEW = "Test4.xml";
-    private int currentQuestion = 0, correctAnswer;
-    private String currentCorrectAnswer;
-
     @FXML
     void initialize() throws Exception {
         serialize(questions);
@@ -141,11 +143,10 @@ public class NewController {
         newButton.setVisible(false);
         chooseLabel.setText("Good luck!");
         labelHidden.setVisible(false);
-        List<Question> questionList = Arrays.asList(questions);//преобразовываем в список
+        List<Question> questionList = Arrays.asList(questions);
         Collections.shuffle(questionList);
         currentCorrectAnswer = questions[currentQuestion].correctAnswer();
         answerButton.setOnAction(event -> {
-            //кнопка, выбранная пользователем
             RadioButton selectedRadio = (RadioButton) answers.getSelectedToggle();
             if (selectedRadio == null) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -154,26 +155,24 @@ public class NewController {
                 alert.showAndWait();
                 selectedRadio.setSelected(true);
             }else {
-                //получаем текст ответа
                 String toggleGroupValue = selectedRadio.getText();
-                //проверяем совпадает ли выбранный ответ с правильным
                 if (toggleGroupValue.equals(currentCorrectAnswer)) correctAnswer++;
             }
-            if (currentQuestion + 1 != questions.length){ //если это не последний вопрос, то у величиваем номер текущего вопроса
+            if (currentQuestion + 1 != questions.length){
                 currentQuestion++;
-                currentCorrectAnswer = questions[currentQuestion].correctAnswer();//новый номер верного ответа
-                labelQuestion.setText(questions[currentQuestion].getName());//меняем текст на новый
-                String [] answers = questions[currentQuestion].getAnswers();//получаем массив ответов
-                List<String> stringList = Arrays.asList(answers);//преобразовываем в список
-                Collections.shuffle(stringList);//сортировка в рандомном порядке
-                radioButton1.setText(stringList.get(0));//передаем текст ответов в радиокнопки
+                currentCorrectAnswer = questions[currentQuestion].correctAnswer();
+                labelQuestion.setText(questions[currentQuestion].getName());
+                String [] answers = questions[currentQuestion].getAnswers();
+                List<String> stringList = Arrays.asList(answers);
+                Collections.shuffle(stringList);
+                radioButton1.setText(stringList.get(0));
                 radioButton2.setText(stringList.get(1));
                 radioButton3.setText(stringList.get(2));
                 radioButton4.setText(stringList.get(3));
-                selectedRadio.setSelected(false);//снимаем выделение пользователем
+                selectedRadio.setSelected(false);
             } else {
                 hideAllControls();
-                labelQuestion.setText("You answered " + correctAnswer + " questions");//вывод кол-ва ответов, на которые пользователь ответил правильно
+                labelQuestion.setText("You answered " + correctAnswer + " questions");
                 if (correctAnswer <= 10){
                     labelHidden.setText("Sorry, you should improve your skills");
                     labelHidden.setVisible(true);
@@ -240,7 +239,7 @@ public class NewController {
         window.showAndWait();
     }
     private void hideAllControls() {
-        radioButton1.setVisible(false);//если вопросы закончились, то скрываем кнопки
+        radioButton1.setVisible(false);
         radioButton2.setVisible(false);
         radioButton3.setVisible(false);
         radioButton4.setVisible(false);
@@ -262,5 +261,3 @@ public class NewController {
         return questions;
     }
 }
-
-

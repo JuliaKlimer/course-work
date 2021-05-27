@@ -29,9 +29,7 @@ public class Question implements Serializable {
     public void setAnswers(String[] answers) {
         this.answers = answers;
     }
-    //правильный ответ - последний элмент массива
     public String correctAnswer(){
         return this.answers[answers.length-1];
     }
-
 }
